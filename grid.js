@@ -1,18 +1,16 @@
 var _ = require('lodash');
 
 function Grid(width, height, obstacles) {
-  this.grid = {
-    width: width,
-    height: height
-  };
+  this.width = width;
+  this.height = height;
   this.obstacles = obstacles;
 }
 
-Grid.prototype.canMove = function(x, y) {
-  if (x >= this.grid.width || x < 0) {
+Grid.prototype.canMoveTo = function(x, y) {
+  if (x >= this.width || x < 0) {
     return false
   }
-  if (y >= this.grid.height || y < 0) {
+  if (y >= this.height || y < 0) {
     return false
   }
 

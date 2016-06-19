@@ -26,3 +26,14 @@ assert(rover.y, 4);
 var rover = new Rover(0,4,'S',grid);
 rover._move('f');
 assert(rover.y, 0);
+
+// Test multiple commands.
+// Success, no obstacles
+var rover = new Rover(0,0,'W',grid);
+assert(rover.takeCommands(['f','f','r','b']), false);
+assert(rover.x, 3);
+assert(rover.y, 4);
+var rover = new Rover(0,0,'E',grid);
+assert(rover.takeCommands(['f','r','f','r','f']), true);
+assert(rover.x, 1);
+assert(rover.y, 1);

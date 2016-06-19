@@ -7,6 +7,17 @@ var Rover = function(x, y, orientation, grid) {
   this.grid = grid;
 }
 
+Rover.prototype.takeCommands = function(commands) {
+  var hasHitObstacle = _.reduce(commands, this._takeCommand.bind(this), false);
+  if (hasHitObstacle) console.log('HIT OBSTACLE');
+  console.log('final position:', this.x, this.y);
+  return hasHitObstacle;
+}
+
+Rover.prototype._takeCommand = function(hasHitObstacle, command) {
+  return hasHitObstacle || this._move(command);
+}
+
 Rover.prototype._move = function(direction) {
   switch (direction) {
   case 'f':
